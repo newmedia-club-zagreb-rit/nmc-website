@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+:root {
+  /* Fixed navbar's rendered height (py-4 + h-14 content, doubled) — kept in
+     sync with components/Navbar.tsx so pages can reserve the right amount
+     of space beneath the floating header. */
+  --header-height: 88px;
+
+  /* Warm, editorial palette sampled from the club's reference image */
+  --background: #f6efea;
+  --background-alt: #fbf7f4;
+  --foreground: #281a1b;
+  --muted: #6d5d55;
+  --border: #e8dcd3;
+  --accent: #4e36a1; /* ultraviolet */
+  --accent-2: #9d4825; /* terracotta */
+  --mauve: #8c546b;
+  --taupe: #766b60;
+  --maroon: #743435; /* echoes the club logo background */
+  --on-accent: #fffbf8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-alt: var(--background-alt);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-mauve: var(--mauve);
+  --color-taupe: var(--taupe);
+  --color-maroon: var(--maroon);
+  --color-on-accent: var(--on-accent);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-kodchasan);
+  --font-calligraphy: var(--font-permanent-marker);
+}
+
+@media (min-width: 640px) {
+  :root {
+    /* py-6 + h-14 content, doubled, at the sm breakpoint and up */
+    --header-height: 104px;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Bauhaus-inspired geometric heading font applied sitewide. Opt out on a
+   per-element basis with `font-sans` (see components/Footer.tsx). */
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading), var(--font-sans), Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.bg-noise {
+  background-image: radial-gradient(circle at 20% 20%, rgba(78, 54, 161, 0.1), transparent 40%),
+    radial-gradient(circle at 80% 0%, rgba(157, 72, 37, 0.12), transparent 45%);
+}
+
+.glass {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.28)
+  );
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(40, 26, 27, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 8px 32px rgba(40, 26, 27, 0.1);
+}
+
+.glass-accent {
+  background: linear-gradient(
+    135deg,
+    rgba(78, 54, 161, 0.22),
+    rgba(78, 54, 161, 0.08)
+  );
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(78, 54, 161, 0.35);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 8px 32px rgba(78, 54, 161, 0.14);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 52s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+
+  .calligraphy-animate {
+    animation: none;
+  }
+}
+
+.calligraphy-svg {
+  height: clamp(3.5rem, 10vw, 5.5rem);
+}
+
+.calligraphy-text {
+  font-family: var(--font-calligraphy), cursive;
+  font-size: 56px;
+  stroke: url(#calligraphy-gradient);
+  stroke-width: 0.8;
+  fill: transparent;
+  paint-order: stroke fill;
+}
+
+.calligraphy-animate {
+  animation: calligraphy-write 4.2s cubic-bezier(0.45, 0, 0.2, 1) forwards;
+}
+
+@keyframes calligraphy-write {
+  0%,
+  70% {
+    fill: transparent;
+  }
+  72% {
+    stroke-dashoffset: 0;
+    fill: transparent;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill: url(#calligraphy-gradient);
+  }
+}
+
+@media (min-width: 640px) {
+  .calligraphy-text {
+    font-size: 64px;
+  }
+}
+
+@media (min-width: 768px) {
+  .calligraphy-text {
+    font-size: 72px;
+  }
+}
+
+.grain {
+  position: relative;
+}
+
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
