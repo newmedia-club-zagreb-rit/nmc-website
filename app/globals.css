@@ -126,52 +126,58 @@ h3 {
     animation: none;
   }
 
-  .calligraphy-animate {
+  .marker-title-animate {
     animation: none;
+    stroke-dashoffset: 0;
+    fill: var(--accent);
   }
 }
 
-.calligraphy-svg {
-  height: clamp(3.5rem, 10vw, 5.5rem);
+.marker-title-svg {
+  height: clamp(7rem, 20vw, 11rem);
 }
 
-.calligraphy-text {
+.marker-title-text {
   font-family: var(--font-calligraphy), cursive;
-  font-size: 60px;
-  stroke: url(#calligraphy-gradient);
-  stroke-width: 0.8;
+  font-size: 120px;
+  stroke: var(--accent);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
   fill: transparent;
   paint-order: stroke fill;
 }
 
-.calligraphy-animate {
-  animation: calligraphy-write 4.2s cubic-bezier(0.45, 0, 0.2, 1) forwards;
+.marker-title-animate {
+  animation: marker-write 2.8s cubic-bezier(0.35, 0, 0.15, 1) forwards;
 }
 
-@keyframes calligraphy-write {
-  0%,
-  70% {
+@keyframes marker-write {
+  0% {
+    stroke-dashoffset: var(--stroke-length, 1000);
     fill: transparent;
   }
-  72% {
+  99% {
     stroke-dashoffset: 0;
     fill: transparent;
   }
   100% {
     stroke-dashoffset: 0;
-    fill: url(#calligraphy-gradient);
+    fill: var(--accent);
   }
 }
 
 @media (min-width: 640px) {
-  .calligraphy-text {
-    font-size: 68px;
+  .marker-title-text {
+    font-size: 136px;
+    stroke-width: 4;
   }
 }
 
 @media (min-width: 768px) {
-  .calligraphy-text {
-    font-size: 76px;
+  .marker-title-text {
+    font-size: 152px;
+    stroke-width: 4.5;
   }
 }
 
