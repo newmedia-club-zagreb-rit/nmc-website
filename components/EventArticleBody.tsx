@@ -145,11 +145,10 @@ function ArticleSpotifyEmbed({
           src={embedUrl}
           width="100%"
           height={height}
-          frameBorder={0}
+          className="w-full border-0"
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
           title={title}
-          className="w-full"
         />
       </div>
     </figure>
@@ -195,18 +194,29 @@ function ArticlePdfEmbed({
           height={height}
           loading="lazy"
           title={title}
-          className="w-full"
+          className="w-full border-0"
         />
       </div>
       <figcaption className="text-center">
-        <Link
-          href={openUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline"
-        >
-          Open full PDF <ArrowUpRight size={14} />
-        </Link>
+        {openUrl.startsWith("http") ? (
+          <a
+            href={openUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline"
+          >
+            Open full PDF <ArrowUpRight size={14} />
+          </a>
+        ) : (
+          <Link
+            href={openUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline"
+          >
+            Open full PDF <ArrowUpRight size={14} />
+          </Link>
+        )}
       </figcaption>
     </figure>
   );
