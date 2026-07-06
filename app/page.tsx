@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import SiteImage from "@/components/SiteImage";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
@@ -59,7 +59,7 @@ export default function Home() {
           </div>
 
           <figure className="min-w-0 w-full">
-            <Image
+            <SiteImage
               src="/home/join-club-room.jpg"
               alt="NMC club hangout space with games and a cozy setup"
               width={339}

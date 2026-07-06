@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import SiteImage from "@/components/SiteImage";
 import { Link2, Mail } from "lucide-react";
 import InstagramIcon from "./icons/InstagramIcon";
 import Container from "./Container";
@@ -12,7 +12,7 @@ export default function Footer() {
         <div className="sm:col-span-2 md:col-span-2">
           <div className="flex items-center gap-2 text-lg font-bold">
             <span className="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-full">
-              <Image
+              <SiteImage
                 src="/logo.png"
                 alt={`${siteConfig.shortName} logo`}
                 fill

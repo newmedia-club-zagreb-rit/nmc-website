@@ -1,4 +1,4 @@
-import Image from "next/image";
+import SiteImage from "@/components/SiteImage";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import Container from "./Container";
@@ -8,7 +8,7 @@ import { artWallImages } from "@/lib/data/artwall";
 function ArtTile({ src, alt, width, height }: { src: string; alt: string; width: number; height: number }) {
   return (
     <div className="relative h-72 w-72 shrink-0 overflow-hidden border border-border sm:h-80 sm:w-80 md:h-[22rem] md:w-[22rem]">
-      <Image
+      <SiteImage
         src={src}
         alt={alt}
         width={width}

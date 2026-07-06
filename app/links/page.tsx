@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import SiteImage from "@/components/SiteImage";
 import Link from "next/link";
 import { ArrowUpRight, Globe, UserPlus } from "lucide-react";
 import InstagramIcon from "@/components/icons/InstagramIcon";
@@ -55,7 +55,7 @@ export default function LinksPage() {
     <div className="bg-noise flex min-h-dvh flex-col items-center px-6 py-12 sm:py-16">
       <div className="flex w-full max-w-sm flex-col items-center">
         <span className="relative flex h-24 w-24 shrink-0 overflow-hidden rounded-full ring-4 ring-background-alt ring-offset-2 ring-offset-background">
-          <Image
+          <SiteImage
             src="/logo.png"
             alt={`${siteConfig.shortName} logo`}
             fill

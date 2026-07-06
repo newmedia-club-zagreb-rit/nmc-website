@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import SiteImage from "@/components/SiteImage";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -52,7 +52,7 @@ export default async function ProjectCaseStudyPage({
     <>
       {caseStudy.heroImage ? (
         <div className="relative -mt-[var(--header-height)] h-[42vh] min-h-[260px] max-h-[520px] w-full overflow-hidden border-b border-border pt-[var(--header-height)]">
-          <Image
+          <SiteImage
             src={caseStudy.heroImage.src}
             alt={caseStudy.heroImage.alt}
             fill

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
+import SiteImage from "@/components/SiteImage";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
@@ -23,7 +23,7 @@ export default function Navbar() {
           className="glass relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full transition-transform hover:scale-105"
           aria-label={siteConfig.name}
         >
-          <Image
+          <SiteImage
             src="/logo.png"
             alt={`${siteConfig.shortName} logo`}
             fill

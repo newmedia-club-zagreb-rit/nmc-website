@@ -1,9 +1,10 @@
-import Image from "next/image";
+import SiteImage from "@/components/SiteImage";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import InstagramEmbed from "@/components/InstagramEmbed";
 import InstagramIcon from "@/components/icons/InstagramIcon";
 import type { EventArticleSection } from "@/lib/data/event-articles";
+import { assetPath } from "@/lib/asset-path";
 
 function ArticleParagraph({ text }: { text: string }) {
   return <p className="text-base leading-[1.85] text-muted">{text}</p>;
@@ -24,7 +25,7 @@ function ArticleImage({
 }) {
   return (
     <figure className="overflow-hidden rounded-2xl border border-border bg-white">
-      <Image
+      <SiteImage
         src={src}
         alt={alt}
         width={width}
@@ -166,12 +167,14 @@ function ArticlePdfEmbed({
   caption?: string;
   height?: number;
 }) {
+  const resolvedSrc = assetPath(src);
+
   return (
     <figure className="space-y-3">
       {caption ? <p className="text-sm leading-relaxed text-muted">{caption}</p> : null}
       <div className="overflow-hidden rounded-xl border border-border bg-background-alt">
         <iframe
-          src={src}
+          src={resolvedSrc}
           width="100%"
           height={height}
           loading="lazy"
@@ -181,7 +184,7 @@ function ArticlePdfEmbed({
       </div>
       <figcaption className="text-center">
         <Link
-          href={src}
+          href={resolvedSrc}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline"

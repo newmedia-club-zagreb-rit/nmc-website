@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import SiteImage from "@/components/SiteImage";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Container from "@/components/Container";
@@ -83,7 +83,7 @@ export default function NmdDayPage() {
                 key={flyer.src}
                 className="overflow-hidden border border-border bg-white p-2"
               >
-                <Image
+                <SiteImage
                   src={flyer.src}
                   alt={flyer.alt}
                   width={400}

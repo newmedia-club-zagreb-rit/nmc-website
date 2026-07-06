@@ -1,4 +1,4 @@
-import Image from "next/image";
+import SiteImage from "@/components/SiteImage";
 import { nmdDayStickerPlacements } from "@/lib/data/nmd-day";
 
 export default function NmdDayStickers() {
@@ -18,7 +18,7 @@ export default function NmdDayStickers() {
             transform: `rotate(${sticker.rotate}deg)`,
           }}
         >
-          <Image
+          <SiteImage
             src={sticker.src}
             alt=""
             width={sticker.width}
