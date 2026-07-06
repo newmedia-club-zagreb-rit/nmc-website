@@ -156,6 +156,21 @@ function ArticleSpotifyEmbed({
   );
 }
 
+function pdfEmbedSrc(src: string): string {
+  if (src.startsWith("http")) {
+    const driveMatch = src.match(/drive\.google\.com\/file\/d\/([^/]+)/);
+    if (driveMatch) {
+      return `https://drive.google.com/file/d/${driveMatch[1]}/preview`;
+    }
+    return src;
+  }
+  return assetPath(src);
+}
+
+function pdfOpenUrl(src: string): string {
+  return src.startsWith("http") ? src : assetPath(src);
+}
+
 function ArticlePdfEmbed({
   src,
   title = "PDF document",
@@ -167,14 +182,15 @@ function ArticlePdfEmbed({
   caption?: string;
   height?: number;
 }) {
-  const resolvedSrc = assetPath(src);
+  const embedSrc = pdfEmbedSrc(src);
+  const openUrl = pdfOpenUrl(src);
 
   return (
     <figure className="space-y-3">
       {caption ? <p className="text-sm leading-relaxed text-muted">{caption}</p> : null}
       <div className="overflow-hidden rounded-xl border border-border bg-background-alt">
         <iframe
-          src={resolvedSrc}
+          src={embedSrc}
           width="100%"
           height={height}
           loading="lazy"
@@ -184,7 +200,7 @@ function ArticlePdfEmbed({
       </div>
       <figcaption className="text-center">
         <Link
-          href={resolvedSrc}
+          href={openUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline"
