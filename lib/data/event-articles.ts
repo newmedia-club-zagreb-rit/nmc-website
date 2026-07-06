@@ -115,7 +115,7 @@ export const eventArticles: Record<string, EventArticle> = {
       },
       {
         type: "pdfEmbed",
-        src: "/archive/yearbook/rit-croatia-yearbook-2024.pdf",
+        src: "https://drive.google.com/file/d/1v6s5DDkV6MnvHlvU1SCTBm6m03HWej-Z/view?usp=sharing",
         title: "RIT Croatia Yearbook 2023/2024",
         caption: "Flip through the full 2023/2024 yearbook below, or open it in a new tab.",
         height: 720,
